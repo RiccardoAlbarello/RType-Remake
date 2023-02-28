@@ -24,6 +24,8 @@ public class MovementPlayer : MonoBehaviour
 
     
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,8 @@ public class MovementPlayer : MonoBehaviour
     {
         PlayerMovement();
         MovementPlayerAuto();
+
+        
     }
 
 
@@ -77,7 +81,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-
+    
 
 
 }
