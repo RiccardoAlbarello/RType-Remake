@@ -6,15 +6,16 @@ public class MovementPlayer : MonoBehaviour
 {
 
     [SerializeField] float playerSpeed = 5f;
+    MenuController m;
 
-    
-    
-    
+
+
+    public Transform player;
 
     [SerializeField] List<GameObject> points;
 
     [SerializeField] float automaticSpeed;
-    
+
 
     [SerializeField] int index = 0;
 
@@ -22,7 +23,11 @@ public class MovementPlayer : MonoBehaviour
 
     [SerializeField] GameObject objecttospawnstart;
 
-    
+    public bool movementPlayer;
+
+
+
+
 
 
 
@@ -30,15 +35,25 @@ public class MovementPlayer : MonoBehaviour
     void Start()
     {
         playerStop = true;
+        movementPlayer = false;
+        m = FindObjectOfType<MenuController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if(movementPlayer == true)
+        {
         PlayerMovement();
+
+        }
+        
         MovementPlayerAuto();
 
-        
+
+
+
     }
 
 
@@ -53,35 +68,74 @@ public class MovementPlayer : MonoBehaviour
 
     void MovementPlayerAuto()
     {
-            
-            if(index == 1)
+
+        if (index == 1)
         {
-         transform.position = Vector3.MoveTowards(transform.position, points[index].transform.position, automaticSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, points[index].transform.position, automaticSpeed * Time.deltaTime);
 
         }
 
-            
-        
+
+
 
         if (Vector3.Distance(transform.position, points[index].transform.position) == 0 && playerStop == true)
         {
             index++;
-            
-            
-            
-           
+
+
+
+
         }
 
         if (index == 2)
         {
             index = 0;
             Instantiate(objecttospawnstart);
-            
+            movementPlayer = true;
+
 
         }
     }
 
-    
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "EnemyBomb")
+        {
+            
+            m.GameOver();
+        }
+        if (other.gameObject.tag == "EnemySpeed")
+        {
+            
+            m.GameOver();
+        }
+        if (other.gameObject.tag == "LimiteGiocatore")
+        {
+            
+            m.GameOver();
+        }
+        if (other.gameObject.tag == "EnemyTank")
+        {
+            
+            m.GameOver();
+        } 
+        if (other.gameObject.tag == "NormalEnemy")
+        {
+            
+            m.GameOver();
+        }
+        
+        if(other.gameObject.tag == "ColliderLaterali")
+        {
+            
+            m.GameOver();
+        }
 
+        if(other.gameObject.tag == "MonetaVittoria")
+        {
+            m.Victory();
+
+        }
+    }
 }

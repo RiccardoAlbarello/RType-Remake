@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MuroProiettili
+  - Enemytank
+  - Bullet
+  - ColliderMorte
+  - EnemySpeed
+  - EnemyBomb
+  - LimiteGiocatore
+  - EnemyTank
+  - NormalEnemy
+  - ColliderLaterali
+  - FineCorsa
+  - MonetaVittoria
   layers:
   - Default
   - TransparentFX

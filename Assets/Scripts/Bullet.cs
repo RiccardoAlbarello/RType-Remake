@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float shootSpeed2;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +17,20 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * shootSpeed2 * Time.deltaTime);
+
+
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+
+        Destroy(gameObject);
+    
+    }
+
+    
+
+
 }
